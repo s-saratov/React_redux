@@ -1,6 +1,6 @@
 import { defineConfig } from "vitest/config"
 import react from "@vitejs/plugin-react"
-import path from "path";
+import path from "path"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,6 +14,7 @@ export default defineConfig({
       pages: path.resolve(__dirname, "src/pages"),
       consultations: path.resolve(__dirname, "src/consultations"),
       styles: path.resolve(__dirname, "src/styles"),
+      store: path.resolve(__dirname, "src/store"),
     },
   },
   server: {
