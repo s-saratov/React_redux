@@ -1,46 +1,50 @@
-import { useState } from "react";
-
-import Button from "../Button/Button";
+import Button from "../Button/Button"
 import {
   FeedbackContainer,
   FeedbackResultContainer,
   LikeDislikeContainer,
-  Result
-} from "./styles";
+  Result,
+} from "./styles"
+
+import { useAppDispatch, useAppSelector } from "store/hooks"
+
+import {
+  feedbackActions,
+  feedbackSelectors,
+} from "store/redux/feedback/feedbackSlice"
 
 function Feedback() {
-  const [likes, setLikes] = useState<number>(0);
-  const [dislike, setDislike] = useState<number>(0);
-  console.log("render");
+  const likes = useAppSelector(feedbackSelectors.likesValue)
+  const dislikes = useAppSelector(feedbackSelectors.dislikesValue)
+  const dispatch = useAppDispatch()
 
-  const addLike = (): void => {
-    setLikes((prevValue) => prevValue + 1);
-  };
+  const like = () => {
+    dispatch(feedbackActions.like())
+  }
 
-  const addDislike = (): void => {
-    setDislike((prevValue) => prevValue + 1);
-  };
+  const dislike = () => {
+    dispatch(feedbackActions.dislike())
+  }
 
-  const resetResults = (): void => {
-    setLikes(0);
-    setDislike(0);
-  };
+  const reset = () => {
+    dispatch(feedbackActions.reset())
+  }
 
   return (
     <FeedbackContainer>
       <FeedbackResultContainer>
         <LikeDislikeContainer>
           <Result>{likes}</Result>
-          <Button name="LIKE" type="button" onClick={addLike} />
+          <Button name="LIKE" type="button" onClick={like} />
         </LikeDislikeContainer>
         <LikeDislikeContainer>
-          <Result>{dislike}</Result>
-          <Button name="DISLIKE" type="button" onClick={addDislike} />
+          <Result>{dislikes}</Result>
+          <Button name="DISLIKE" type="button" onClick={dislike} />
         </LikeDislikeContainer>
       </FeedbackResultContainer>
-      <Button name="RESET RESULTS" type="button" onClick={resetResults} />
+      <Button name="RESET RESULTS" type="button" onClick={reset} />
     </FeedbackContainer>
-  );
+  )
 }
 
-export default Feedback;
+export default Feedback
