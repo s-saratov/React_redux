@@ -15,15 +15,21 @@ function Counter() {
   const counter = useAppSelector(counterSelectors.counterValue)
 
   // 12. Получаем функцию dispatch, которую возвращает hook useDispatch
+  // Доставляем action в Redux store и вызываем конкретный reducer
   const dispatch = useAppDispatch()
 
   const onMinus = () => {
     // 13. Диспатчим action (передаём в вызов функции dispatch необходимый идентификатор действия (action))
+    // counterActions.minus() - action creater (создаёт action)
+    // action является объектом, в котоом две пары "ключ-значение": payload и type
+    // 1. Payload по-умолчанию undefined, но мы можем передать данные в reducer
+    // 2. Type - это строка, благодаря которой мы можем вызывать конкретный reducer
     dispatch(counterActions.minus())
   }
 
   const onPlus = () => {
     // 13. Диспатчим action (передаём в вызов функции dispatch необходимый идентификатор действия (action))
+    // 
     dispatch(counterActions.plus())
   }
 
