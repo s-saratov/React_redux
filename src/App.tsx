@@ -8,7 +8,9 @@ import Home from 'pages/UsersApp/Home/Home'
 import Users from 'pages/UsersApp/Users/Users'
 import Lesson18 from 'lessons/Lesson_18/Lesson18'
 
+
 // === Homeworks ===
+import Homework17 from 'homeworks/Homework_17/Honework17'
 
 // === Consultations ===
 
@@ -18,7 +20,7 @@ const App = () => {
       <GlobalStyles />
       {/* <Lesson17 /> */}
       {/* UserApp - Practice - Lesson17 */}
-      <Layout>
+      {/* <Layout>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/users' element={<Users/>}/>
@@ -26,7 +28,8 @@ const App = () => {
           <Route path='/lesson18' element={<Lesson18/>}/>
           <Route path='*' element='Page not found'/>
         </Routes>
-      </Layout>
+      </Layout> */}
+      <Homework17/>
     </BrowserRouter>
   )
 }
