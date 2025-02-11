@@ -1,6 +1,7 @@
 // 1. Импортируем функцию, с помощью которой мы создаём slice
 import { createAppSlice } from "store/createAppSlice"
 import { CounterStateSlice } from "./types"
+import { PayloadAction } from "@reduxjs/toolkit"
 
 // 4.1. Создаём объект с первоначальным состоянием, который затем передаём в inintialState
 const counterInititalState: CounterStateSlice = {
@@ -28,14 +29,23 @@ export const counterSlice = createAppSlice({
   // Reducer - функция, в качестве аргумента мы передаём в неё функцию callback,
   // у которой два аргумента - state и action, они не являются обязательными
   // - state является точной копией актуального state из Redux на момент использования функции
-  // - action - 
+  // - action является объектом, в котоом две пары "ключ-значение": payload и type
+    // 1. Payload по-умолчанию undefined, но мы можем передать данные в reducer
+    // 2. Type - это строка, благодаря которой мы можем вызывать конкретный reducer
   reducers: create => ({
     plus: create.reducer((state: CounterStateSlice) => {
       state.count = state.count + 1
     }),
-    minus: create.reducer((state: CounterStateSlice) => {
-      state.count = state.count - 1
-    }),
+    minus: create.reducer(
+      (state: CounterStateSlice, action: PayloadAction<number | undefined>) => {
+        // state.count = state.count - 1
+        if (action.payload) {
+          state.count = state.count - action.payload
+        } else {
+          state.count = state.count - 1
+        }
+      },
+    ),
   }),
 
   // 6. Создаём селекторы, которые позволяют забрать данные из state в компонент
@@ -44,7 +54,7 @@ export const counterSlice = createAppSlice({
   },
 })
 
-console.log(counterSlice);
+console.log(counterSlice)
 
 // 7. Экспорт actions и селекторов для возможности их использования в компонентах
 // counterActions - это объект в котором лежат action-ы

@@ -24,7 +24,8 @@ function Counter() {
     // action является объектом, в котоом две пары "ключ-значение": payload и type
     // 1. Payload по-умолчанию undefined, но мы можем передать данные в reducer
     // 2. Type - это строка, благодаря которой мы можем вызывать конкретный reducer
-    dispatch(counterActions.minus())
+    // console.log()
+    dispatch(counterActions.minus(1))
   }
 
   const onPlus = () => {
