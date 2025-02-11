@@ -37,7 +37,7 @@ function AdviceRandomizer() {
         {status === "loading" && <Spinner />}
         {error && <ErrorWrapper>{error}</ErrorWrapper>}
         <AdvicesContainer>{Advices}</AdvicesContainer>
-        <Button name="DELETE ADVICES" onClick={removeAdvices} />
+        {data.length !== 0 && <Button name="DELETE ADVICES" onClick={removeAdvices} />}
       </AdviceCard>
     </AdviceRandomizerWrapper>
   )
