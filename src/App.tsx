@@ -10,6 +10,7 @@ import Lesson18 from "lessons/Lesson_18/Lesson18"
 
 // === Homeworks ===
 import Homework17 from "homeworks/Homework_17/Honework17"
+import Homework18 from "homeworks/Homework_18/Honework18"
 
 // === Consultations ===
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/lesson17" element={<Lesson17 />} />
           <Route path="/homework17" element={<Homework17 />} />
           <Route path="/lesson18" element={<Lesson18 />} />
+          <Route path="/homework18" element={<Homework18 />} />
           <Route path="*" element="Page not found" />
         </Routes>
       </Layout>
