@@ -15,9 +15,9 @@ export const userSlice = createAppSlice({
         })
     }),
     selectors: {
-        state: (userSliceState) => state.users
+        users: (state: userSliceState) => state.users
     }
 })
 
-export const usersActions = userSlice.usersActions
-export const usersSelectors = userSlice.usersSelectors
+export const usersActions = userSlice.actions
+export const usersSelectors = userSlice.selectors
